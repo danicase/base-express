@@ -1,5 +1,5 @@
 const app = require('express')();
-const PORT = 4141;
+const PORT = 8080;
 
 const logger = function (req, res, next) {
   console.log(req.url);
@@ -8,7 +8,7 @@ const logger = function (req, res, next) {
 app.use(logger);
 
 app.use('/*', (req, res) => {
-  res.send(`made a call at ${req.path}`);
+  res.send(`made a call at ${req.url}`);
 });
 
 app.listen(PORT, () => console.log(`Listening to port ${PORT}`));
