@@ -6,7 +6,7 @@ const healthCheck = express();
 healthCheck.get('*', (req, res) => {
   res.send(JSON.stringify({ status: 'ok' }));
 });
-healthCheck.listen(80);
+// healthCheck.listen(80);
 
 const logger = function (req, res, next) {
   console.log(req.url);
