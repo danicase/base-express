@@ -16,8 +16,19 @@ healthCheck.get('/health', (req, res) => {
 });
 
 app.use('/test', (req, res) => {
-  console.log(req);
-  res.send(JSON.stringify({ status: 'ok' }));
+  console.log(req.headers);
+  const xAmznTraceId = req.header('x-amzn-trace-id');
+  const xAmznOidcData = req.header('x-amzn-oidc-data');
+  const xAmznOidcIdentity = req.header('x-amzn-oidc-identity');
+  const xAmznOidcAccesstoken = req.header('x-amzn-oidc-accesstoken');
+  res.send(
+    JSON.stringify({
+      xAmznOidcData,
+      xAmznTraceId,
+      xAmznOidcIdentity,
+      xAmznOidcAccesstoken,
+    })
+  );
 });
 
 app.use('/', express.static(path.join(__dirname, 'public')));
