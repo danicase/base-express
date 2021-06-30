@@ -15,6 +15,11 @@ healthCheck.get('/health', (req, res) => {
   res.send(JSON.stringify({ status: 'ok' }));
 });
 
+app.use('/test', (req, res) => {
+  console.log(req);
+  res.send(JSON.stringify({ status: 'ok' }));
+});
+
 app.use('/', express.static(path.join(__dirname, 'public')));
 
 app.listen(PORT, () => console.log(`Listening to port ${PORT}`));
