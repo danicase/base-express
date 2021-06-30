@@ -10,7 +10,9 @@
 .text-white {
 color: white;
 }
-
+body {
+  margin: 0;
+}
 .top-left {
   position: absolute;
     left: 0;
